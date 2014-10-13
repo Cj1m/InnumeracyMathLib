@@ -38,7 +38,7 @@ public class SurdifyExample {
 		StringBuilder surdBuilder = new StringBuilder();
 
 		if (squareNumber != 0) {
-			squareNumber = (int) Mth.squarerroot(squareNumber);
+			squareNumber = (int) Math.sqrt(squareNumber);
 			
 			if(squareNumber != 0){
 				surdBuilder.append(squareNumber);

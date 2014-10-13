@@ -1,6 +1,8 @@
 package com.innumeracy.examples;
 import java.util.Scanner;
 
+import com.innumeracy.api.Mth;
+
 
 public class Main {
 	public static void main(String[] args){
@@ -12,6 +14,12 @@ public class Main {
 		System.out.println("B: Simplify surds (Surdify)");
 		System.out.println("C: Simplify fractions");
 		System.out.println("_________________________________________________");
+		
+		long start = System.currentTimeMillis();
+		//System.out.println(Mth.isPrime(2));
+		System.out.println(Mth.roundToDecimalPlaces(10.1, 2));
+		long end = System.currentTimeMillis();
+		System.out.println(end - start);
 		
 		Scanner sc = new Scanner(System.in);
 		switch(sc.nextLine().toLowerCase()){

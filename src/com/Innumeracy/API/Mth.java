@@ -3,85 +3,114 @@ package com.innumeracy.api;
 import java.util.ArrayList;
 
 public class Mth {
-	//Booleans
-	public static boolean isPalindromic(int a) {
-		String reversed = new StringBuilder(Integer.toString(a)).reverse()
+	// Booleans
+	/**
+	 * @param number CShecked for being palindromic (looking the same when written backwards). Examples of palindromes are 101 or 234432.
+	 * @return true if number is palindromic, false otherwise.
+	 */
+	public static boolean isPalindromic(int number) {
+		String reversed = new StringBuilder(Integer.toString(number)).reverse()
 				.toString();
-		String normal = Integer.toString(a);
+		String normal = Integer.toString(number);
 		return normal.equals(reversed);
 	}
 
-	public static boolean isPrime(int i) {
-		int half = Math.round(i / 2);
+	/**
+	 * @param number Checked for being prime (only divisible by itself and 1).
+	 * @return true if number is prime, false otherwise.
+	 */
+	public static boolean isPrime(int number) {
+		if (number < 0) {
+			throw new IllegalArgumentException();
+		}
+		int half = Math.round(number / 2);
 		for (int j = half; j >= 2; j--) {
-			if (i % j == 0) {
+			if (number % j == 0) {
 				return false;
 			}
 		}
+
 		return true;
 	}
 
-	public static boolean isSquare(int i) {
-		if (i % 2 != 0 && i != 1)
-			return false;
-
-		int half = i / 2;
-		if (i == 1)
-			half = 1;
-
-		for (int j = 0; j <= half; j++) {
-			if (j * j == i)
-				return true;
+	/**
+	 * @param number Checked for being square (a product of a number multiplied by itself).
+	 * @return true if number is square, false otherwise.
+	 */
+	public static boolean isSquare(int number) {
+		if (number < 0) {
+			throw new IllegalArgumentException();
 		}
+
+		if (Math.sqrt(number) % 1 == 0) {
+			return true;
+		}
+
 		return false;
 	}
-	
-	
-	//Doubles
-	public static double roundToDecimalPlaces(double i, int n) {
-		double roundedNumber = (double) Math.round(i * power(10, n))
-				/ power(10, n);
+
+	// Doubles
+	/**
+	 * @param number the decimal number which is rounded to 'decimalPlaces' amount of decimal places.
+	 * @param decimalPlaces the number of decimal places 'number' is rounded to.
+	 * @return the rounded decimal number.
+	 */
+	public static double roundToDecimalPlaces(double number, int decimalPlaces) {
+		if (decimalPlaces < 0) {
+			throw new IllegalArgumentException();
+		}
+		double roundedNumber = (double) Math.round(number * power(10, decimalPlaces))
+				/ power(10, decimalPlaces);
 		return roundedNumber;
 	}
 
-	public static double power(double i, int n) {
+	/**
+	 * @param number the base in the Exponentiation operation.
+	 * @param power the mantissa in the Exponentiation operation.
+	 * @return 'number' * 'number' 'power' amount of times.
+	 */
+	public static double power(double number, int power) {
+		if (power < 0) {
+			throw new IllegalArgumentException();
+		}
 		double answer = 1;
-		for (int j = 0; j < n; j++) {
-			answer *= i;
+		for (int j = 0; j < power; j++) {
+			answer *= number;
 		}
 		return answer;
 	}
-	
-	public static double squarerroot(double i){
-		double half = i / 2;
-		for(double j = half; j > 0; j-=0.01){
-			j = Mth.roundToDecimalPlaces(j, 2);
-			if(j*j==i){
-				return j;
-			}
+
+	// Ints
+	/**
+	 * @param number the number whose factors are desired.
+	 * @return int[] of all the factors of 'number'.
+	 */
+	public static int[] factorsOf(int number) {
+		if (number < 0) {
+			throw new IllegalArgumentException();
 		}
-		return 0;
-	}
-	
-	
-	//Ints
-	public static int[] factorsOf(int i) {
-		int half = Math.round(i / 2);
+
+		int half = Math.round(number / 2);
 		ArrayList<Integer> factorsList = new ArrayList<Integer>();
 		for (int j = 1; j <= half; j++) {
-			if (i % j == 0)
+			if (number % j == 0)
 				factorsList.add(j);
 		}
-		factorsList.add(i);
+		factorsList.add(number);
 		int[] factors = new int[factorsList.size()];
 		for (int k = 0; k < factorsList.size(); k++)
 			factors[k] = factorsList.get(k);
 		return factors;
 	}
 
-	public static int hcf(int a, int b) {
-		int[] factorsOfA = factorsOf(a);
-		int[] factorsOfB = factorsOf(b);
+	/**
+	 * @param number1 the first number.
+	 * @param number2 the second number.
+	 * @return the Greatest Common Factor of both 'number1' and 'number2'.
+	 */
+	public static int gcf(int number1, int number2) {
+		int[] factorsOfA = factorsOf(number1);
+		int[] factorsOfB = factorsOf(number2);
 		int hcf = 0;
 
 		for (int i = factorsOfA.length - 1; i >= 0; i--) {
@@ -95,12 +124,21 @@ public class Mth {
 		return hcf;
 	}
 
-	public static int lcm(int a, int b) {
-		return a * (b / hcf(a, b));
+	/**
+	 * @param number1 the first number.
+	 * @param number2 the second number.
+	 * @return the lowest common multiple of both 'number1' and 'number2'.
+	 */
+	public static int lcm(int number1, int number2) {
+		return number1 * (number2 / gcf(number1, number2));
 	}
 
-	public static int getDigits(double i) {
-		String digits = Double.toString(i);
+	/**
+	 * @param number whose digits are counted.
+	 * @return the number of digits in the number E.g 3.14 = 3 digits (3,1 and 4).
+	 */
+	public static int getNumberOfDigits(double number) {
+		String digits = Double.toString(number);
 		if (digits.endsWith(".0")) {
 			digits = digits.substring(0, digits.length() - 2);
 		} else {
@@ -108,18 +146,21 @@ public class Mth {
 		}
 		return digits.length();
 	}
-	
-	
-	//String
-	public static String simplifyFraction(String a) {
-		String[] parts = a.split("/");
+
+	// String
+	/**
+	 * @param fraction which to be 'simplified'
+	 * @return 'simplified' fraction as a String E.g "2/4" = "1/2"
+	 */
+	public static String simplifyFraction(String fraction) {
+		String[] parts = fraction.split("/");
 		int partOne = Integer.parseInt(parts[0]);
 		int partTwo = Integer.parseInt(parts[1]);
 
-		int hcf = hcf(partOne, partTwo);
+		int gcf = gcf(partOne, partTwo);
 		StringBuilder fractionBuilder = new StringBuilder();
-		String simplifiedPartOne = Integer.toString(partOne / hcf);
-		String simplifiedPartTwo = Integer.toString(partTwo / hcf);
+		String simplifiedPartOne = Integer.toString(partOne / gcf);
+		String simplifiedPartTwo = Integer.toString(partTwo / gcf);
 		fractionBuilder.append(simplifiedPartOne);
 		fractionBuilder.append("/");
 		fractionBuilder.append(simplifiedPartTwo);
