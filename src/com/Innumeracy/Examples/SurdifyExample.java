@@ -1,20 +1,21 @@
-package com.Innumeracy.Examples;
+package com.innumeracy.examples;
 
 import java.util.Scanner;
 
-import com.Innumeracy.API.Mth;
+import com.innumeracy.api.Mth;
 
 public class SurdifyExample {
 	public SurdifyExample() {
 		receiveInput();
 	}
 
-	@SuppressWarnings("resource")
 	private void receiveInput() {
 		System.out.println("_________________________________________________");
 		System.out
 				.println("Enter the surd you want to be surdified (root is implied).");
-		int surd = new Scanner(System.in).nextInt();
+		Scanner sc = new Scanner(System.in);
+		int surd = sc.nextInt();
+		sc.close();
 		System.out.println("__________________CALCULATING____________________");
 		displayResult(surd);
 	}

@@ -1,21 +1,24 @@
-package com.Innumeracy.Examples;
+package com.innumeracy.examples;
 
 import java.util.Scanner;
 
-import com.Innumeracy.API.Mth;
+import com.innumeracy.api.Mth;
 
 public class RoundingExample {
 	public RoundingExample(){
 		receiveInput();
 	}
 	
-	@SuppressWarnings("resource")
 	private void receiveInput(){
 		System.out.println("_________________________________________________");
 		System.out.println("Enter the number you want to be rounded (must be a decimal number).");
-		double numberToRound = new Scanner(System.in).nextDouble();
+		Scanner sc = new Scanner(System.in);
+		double numberToRound = sc.nextDouble();
+		sc.close();
 		System.out.println("Now enter the number of decimal places you want the number to be rounded to.");
-		int dps = new Scanner(System.in).nextInt();
+		Scanner sc2 = new Scanner(System.in);
+		int dps = sc2.nextInt();
+		sc2.close();
 		System.out.println("__________________CALCULATING____________________");
 		displayResult(numberToRound, dps);
 	}

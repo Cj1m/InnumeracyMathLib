@@ -1,19 +1,20 @@
-package com.Innumeracy.Examples;
+package com.innumeracy.examples;
 
 import java.util.Scanner;
 
-import com.Innumeracy.API.Mth;
+import com.innumeracy.api.Mth;
 
 public class SimplifyExample {
 	public SimplifyExample() {
 		receiveInput();
 	}
 
-	@SuppressWarnings("resource")
 	private void receiveInput() {
 		System.out.println("_________________________________________________");
 		System.out.println("Enter the fraction you want simplified.");
-		String fraction = new Scanner(System.in).nextLine();
+		Scanner sc = new Scanner(System.in);
+		String fraction = sc.nextLine();
+		sc.close();
 		System.out.println("__________________CALCULATING____________________");
 		displayResult(fraction);
 	}

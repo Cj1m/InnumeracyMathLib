@@ -1,4 +1,4 @@
-package com.Innumeracy.API;
+package com.innumeracy.api;
 
 import java.util.ArrayList;
 

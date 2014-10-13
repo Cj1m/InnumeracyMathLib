@@ -1,4 +1,4 @@
-package com.Innumeracy.Examples;
+package com.innumeracy.examples;
 import java.util.Scanner;
 
 
@@ -13,7 +13,6 @@ public class Main {
 		System.out.println("C: Simplify fractions");
 		System.out.println("_________________________________________________");
 		
-		@SuppressWarnings("resource")
 		Scanner sc = new Scanner(System.in);
 		switch(sc.nextLine().toLowerCase()){
 		case "a":
@@ -26,5 +25,6 @@ public class Main {
 			new SimplifyExample();
 			break;
 		}
+		sc.close();
 	}
 }
