@@ -106,22 +106,27 @@ public class Mth {
 	/**
 	 * @param number1 the first number.
 	 * @param number2 the second number.
-	 * @return the Greatest Common Factor of both 'number1' and 'number2'.
+	 * @return the Greatest Common Divisor of both 'number1' and 'number2' using Euclid's algorithm.
 	 */
-	public static int gcf(int number1, int number2) {
-		int[] factorsOfA = factorsOf(number1);
-		int[] factorsOfB = factorsOf(number2);
-		int hcf = 0;
-
-		for (int i = factorsOfA.length - 1; i >= 0; i--) {
-			for (int j = factorsOfB.length - 1; j >= 0; j--) {
-				if (factorsOfA[i] == factorsOfB[j]) {
-					hcf = factorsOfA[i];
-					return hcf;
-				}
-			}
+	public static int gcd(int number1, int number2) {
+		int larger = number1;
+		int smaller = number2;
+		
+		if(number1 < number2){
+			larger = number2;
+			smaller = number1;
 		}
-		return hcf;
+		
+		int result = smaller;
+		int remainder = larger % smaller;
+		
+		while(remainder != 0){
+			int previousResult = result;
+			result = remainder;
+			remainder = previousResult % result;
+		}
+		
+		return result;
 	}
 
 	/**
@@ -130,7 +135,7 @@ public class Mth {
 	 * @return the lowest common multiple of both 'number1' and 'number2'.
 	 */
 	public static int lcm(int number1, int number2) {
-		return number1 * (number2 / gcf(number1, number2));
+		return number1 * (number2 / gcd(number1, number2));
 	}
 
 	/**
@@ -157,7 +162,7 @@ public class Mth {
 		int partOne = Integer.parseInt(parts[0]);
 		int partTwo = Integer.parseInt(parts[1]);
 
-		int gcf = gcf(partOne, partTwo);
+		int gcf = gcd(partOne, partTwo);
 		StringBuilder fractionBuilder = new StringBuilder();
 		String simplifiedPartOne = Integer.toString(partOne / gcf);
 		String simplifiedPartTwo = Integer.toString(partTwo / gcf);

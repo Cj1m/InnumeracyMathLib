@@ -17,7 +17,7 @@ public class Main {
 		
 		long start = System.currentTimeMillis();
 		//System.out.println(Mth.isPrime(2));
-		System.out.println(Mth.roundToDecimalPlaces(10.1, 2));
+		System.out.println(Mth.gcd(739845632,287723564));
 		long end = System.currentTimeMillis();
 		System.out.println(end - start);
 		
