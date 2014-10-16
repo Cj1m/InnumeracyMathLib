@@ -15,12 +15,6 @@ public class Main {
 		System.out.println("C: Simplify fractions");
 		System.out.println("_________________________________________________");
 		
-		long start = System.currentTimeMillis();
-		//System.out.println(Mth.isPrime(2));
-		System.out.println(Mth.gcd(739845632,287723564));
-		long end = System.currentTimeMillis();
-		System.out.println(end - start);
-		
 		Scanner sc = new Scanner(System.in);
 		switch(sc.nextLine().toLowerCase()){
 		case "a":
