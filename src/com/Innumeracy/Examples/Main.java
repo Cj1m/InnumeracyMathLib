@@ -14,7 +14,7 @@ public class Main {
 		System.out.println("B: Simplify surds (Surdify)");
 		System.out.println("C: Simplify fractions");
 		System.out.println("_________________________________________________");
-		
+
 		Scanner sc = new Scanner(System.in);
 		switch(sc.nextLine().toLowerCase()){
 		case "a":

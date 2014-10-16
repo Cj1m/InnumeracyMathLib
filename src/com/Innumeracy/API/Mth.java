@@ -93,8 +93,9 @@ public class Mth {
 		int half = Math.round(number / 2);
 		ArrayList<Integer> factorsList = new ArrayList<Integer>();
 		for (int j = 1; j <= half; j++) {
-			if (number % j == 0)
+			if (number % j == 0){
 				factorsList.add(j);
+			}
 		}
 		factorsList.add(number);
 		int[] factors = new int[factorsList.size()];
@@ -109,24 +110,11 @@ public class Mth {
 	 * @return the Greatest Common Divisor of both 'number1' and 'number2' using Euclid's algorithm.
 	 */
 	public static int gcd(int number1, int number2) {
-		int larger = number1;
-		int smaller = number2;
-		
-		if(number1 < number2){
-			larger = number2;
-			smaller = number1;
+		if(number2 == 0){
+			return number1;
 		}
 		
-		int result = smaller;
-		int remainder = larger % smaller;
-		
-		while(remainder != 0){
-			int previousResult = result;
-			result = remainder;
-			remainder = previousResult % result;
-		}
-		
-		return result;
+		return gcd(number2, number1 % number2);
 	}
 
 	/**
