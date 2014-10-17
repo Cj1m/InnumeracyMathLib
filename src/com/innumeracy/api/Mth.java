@@ -24,7 +24,7 @@ public class Mth {
 	 */
 	public static boolean isPrime(int number) {
 		if (number < 0) {
-			throw new IllegalArgumentException("Error: int < 0!");
+			throw new IllegalArgumentException("Error: int cannot be < 0!");
 		}
 		int sqrt = (int) (Math.sqrt(number) + 1);
 
@@ -51,7 +51,7 @@ public class Mth {
 	 */
 	public static boolean isSquare(int number) {
 		if (number < 0) {
-			throw new IllegalArgumentException("Error: int < 0!");
+			throw new IllegalArgumentException("Error: int cannot be < 0!");
 		}
 
 		if (Math.sqrt(number) % 1 == 0) {
@@ -72,7 +72,7 @@ public class Mth {
 	 */
 	public static double roundToDecimalPlaces(double number, int decimalPlaces) {
 		if (decimalPlaces < 0) {
-			throw new IllegalArgumentException("Error: int < 0!");
+			throw new IllegalArgumentException("Error: int cannot be < 0!");
 		}
 		double roundedNumber = (double) Math.round(number
 				* power(10, decimalPlaces))
@@ -89,7 +89,7 @@ public class Mth {
 	 */
 	public static double power(double number, int power) {
 		if (power < 0) {
-			throw new IllegalArgumentException("Error: int < 0!");
+			throw new IllegalArgumentException("Error: int cannot be < 0!");
 		}
 		double answer = 1;
 		for (int j = 0; j < power; j++) {
@@ -106,7 +106,7 @@ public class Mth {
 	 */
 	public static int[] factorsOf(int number) {
 		if (number < 0) {
-			throw new IllegalArgumentException("Error: int < 0!");
+			throw new IllegalArgumentException("Error: int cannot be < 0!");
 		}
 
 		int half = Math.round(number / 2);
@@ -132,6 +132,10 @@ public class Mth {
 	 *         Euclid's algorithm.
 	 */
 	public static int gcd(int number1, int number2) {
+		if(number1 < 0 || number2 < 0){
+			throw new IllegalArgumentException("Error: int cannot be < 0!");
+		}
+		
 		if (number2 == 0) {
 			return number1;
 		}
