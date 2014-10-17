@@ -132,10 +132,10 @@ public class Mth {
 	 *         Euclid's algorithm.
 	 */
 	public static int gcd(int number1, int number2) {
-		if(number1 < 0 || number2 < 0){
+		if (number1 < 0 || number2 < 0) {
 			throw new IllegalArgumentException("Error: int cannot be < 0!");
 		}
-		
+
 		if (number2 == 0) {
 			return number1;
 		}
@@ -170,6 +170,20 @@ public class Mth {
 		return digits.length();
 	}
 
+	/**
+	 * @param number
+	 *            the number to calculate the factorial of
+	 * @return the factorial of number
+	 */
+	public static int factorial(int number) {
+		if (number - 1 == 1) {
+			return number;
+		}
+
+		return number * factorial(number - 1);
+	}
+
+	
 	// String
 	/**
 	 * @param fraction
