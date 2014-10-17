@@ -1,5 +1,6 @@
 package com.innumeracy.api;
 
+import java.math.BigInteger;
 import java.util.ArrayList;
 
 public class Mth {
@@ -172,15 +173,28 @@ public class Mth {
 
 	/**
 	 * @param number
-	 *            the number to calculate the factorial of
-	 * @return the factorial of number
+	 *            the number to calculate the factorial of (double)
+	 * @return the factorial of number (double)
 	 */
-	public static int factorial(int number) {
+	public static double factorial(double number) {
 		if (number - 1 == 1) {
 			return number;
 		}
 
 		return number * factorial(number - 1);
+	}
+	
+	/**
+	 * @param number
+	 *            the number to calculate the factorial of (BigInteger)
+	 * @return the factorial of number (BigInteger)
+	 */
+	public static BigInteger factorial(BigInteger number) {
+		if (number.equals(BigInteger.valueOf(2))) {
+			return number;
+		}
+
+		return number.multiply(factorial(number.subtract(BigInteger.valueOf(1))));
 	}
 
 	
