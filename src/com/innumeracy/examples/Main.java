@@ -1,5 +1,4 @@
 package com.innumeracy.examples;
-import java.math.BigInteger;
 import java.util.Scanner;
 
 import com.innumeracy.api.Mth;
@@ -15,7 +14,9 @@ public class Main {
 		System.out.println("B: Simplify surds (Surdify)");
 		System.out.println("C: Simplify fractions");
 		System.out.println("_________________________________________________");
-		System.out.println(Mth.factorial(BigInteger.valueOf(171)));
+		
+		System.out.println(Mth.fib(11));
+		
 		Scanner sc = new Scanner(System.in);
 		switch(sc.nextLine().toLowerCase()){
 		case "a":

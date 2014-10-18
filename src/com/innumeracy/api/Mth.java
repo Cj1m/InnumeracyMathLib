@@ -172,6 +172,21 @@ public class Mth {
 	}
 
 	/**
+	 * @param n
+	 *            the place in the Fibonacci sequence
+	 * @return the nth Fibonacci number
+	 */
+	public static int fib(int n) {
+		if (n < 0) {
+			throw new IllegalArgumentException("Error: int cannot be < 0!");
+		}
+		if (n == 0 || n == 1) {
+			return n;
+		}
+		return fib(n - 1) + fib(n - 2);
+	}
+
+	/**
 	 * @param number
 	 *            the number to calculate the factorial of (double)
 	 * @return the factorial of number (double)
@@ -183,7 +198,7 @@ public class Mth {
 
 		return number * factorial(number - 1);
 	}
-	
+
 	/**
 	 * @param number
 	 *            the number to calculate the factorial of (BigInteger)
@@ -194,10 +209,10 @@ public class Mth {
 			return number;
 		}
 
-		return number.multiply(factorial(number.subtract(BigInteger.valueOf(1))));
+		return number
+				.multiply(factorial(number.subtract(BigInteger.valueOf(1))));
 	}
 
-	
 	// String
 	/**
 	 * @param fraction
