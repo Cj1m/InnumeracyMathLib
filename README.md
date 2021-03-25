@@ -5,3 +5,8 @@ Innumeracy is my first attempt at a Java library. It adds some extra math featur
 
 I have tested the library out by doing some Project Euler problems (https://projecteuler.net/) and it seems to work pretty well, reducing the amount of code needed to solve a problem, while keeping the program running fast and efficiently!
 
+EDIT (25/03/2021):
+
+TL;DR This is a Math library with 0 jUnit tests to back it up. 
+
+It Just Works™.
